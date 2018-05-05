@@ -61,6 +61,11 @@ class Api extends REST_Controller
  	 * Memuat data Tracking Mobil
  	 * @return json
 	 */
-
+   public function test_get()
+   {
+     $this->load->model("proses/bot");
+     $d = $this->bot->ardortrade("asksell","7","0.5","SECRET");
+     $this->response($d);
+   }
 
 }
