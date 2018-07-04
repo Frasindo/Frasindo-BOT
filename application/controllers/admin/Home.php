@@ -14,6 +14,9 @@ class Home extends CI_Controller{
   {
     parent::__construct();
     $this->load->model("crud/main");
+    if ($this->session->id_admin == NULL) {
+      redirect("login");
+    }
   }
   /**
  	 * Index Home
@@ -28,8 +31,14 @@ class Home extends CI_Controller{
     $this->template->setjs([
       base_url("assets/main/home.js")
     ],true);
+    $this->main->setTable("ardor");
+    $a = $this->main->get();
+    $this->main->setTable("log_failed");
+    $as = $this->main->get();
     $build = [
       "block_title"=>"Dashboard",
+      "total_account"=>$a->num_rows(),
+      "total_log"=>$as->num_rows()
     ];
     // Render
     $this->template->renderHTML(['head','home','foot'],['title'=>"Dashboard",'other'=>$build]);

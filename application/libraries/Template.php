@@ -48,52 +48,52 @@ class Template {
   {
     if($type == "admin"){
       $css = [
-        base_url("assets/adminlte/bower_components/bootstrap/dist/css/bootstrap.min.css"),
-        base_url("assets/adminlte/bower_components/font-awesome/css/font-awesome.min.css"),
-        base_url("assets/adminlte/bower_components/Ionicons/css/ionicons.min.css"),
-        base_url("assets/adminlte/dist/css/AdminLTE.min.css"),
-        base_url("assets/adminlte/dist/css/skins/_all-skins.min.css"),
-        base_url("assets/adminlte/bower_components/morris.js/morris.css"),
-        base_url("assets/adminlte/bower_components/jvectormap/jquery-jvectormap.css"),
-        base_url("assets/adminlte/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css"),
-        base_url("assets/adminlte/bower_components/bootstrap-daterangepicker/daterangepicker.css"),
-        base_url("assets/extra/swal.css"),
-        base_url("assets/extra/datatables/datatables.min.css"),
-        base_url("assets/extra/select2/css/select2.min.css"),
-        base_url("assets/adminlte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css")
+        '//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css',
+        '//cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css',
+        base_url("assets/admin/css/style.css"),
+        "//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker-standalone.css",
+        '//cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.4/css/selectize.bootstrap3.min.css',
+        '//cdn.datatables.net/1.10.18/css/dataTables.bootstrap4.min.css'
       ];
       $js = [
-        base_url("assets/adminlte/bower_components/jquery/dist/jquery.min.js"),
-        base_url("assets/adminlte/bower_components/jquery-ui/jquery-ui.min.js"),
-        base_url("assets/adminlte/bower_components/bootstrap/dist/js/bootstrap.min.js"),
-        base_url("assets/adminlte/bower_components/raphael/raphael.min.js"),
-        base_url("assets/adminlte/bower_components/morris.js/morris.min.js"),
-        base_url("assets/adminlte/bower_components/jquery-sparkline/dist/jquery.sparkline.min.js"),
-        base_url("assets/adminlte/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"),
-        base_url("assets/extra/swal.js"),
-        base_url("assets/extra/datatables/datatables.min.js"),
-        base_url("assets/extra/datatables/sum.js"),
-        base_url("assets/extra/select2/js/select2.full.js"),
-        base_url("assets/extra/bootbox.min.js"),
-        base_url("assets/adminlte/dist/js/adminlte.min.js")
+        base_url("assets/admin/node_modules/jquery/jquery-3.2.1.min.js"),
+        base_url("assets/admin/node_modules/popper/popper.min.js"),
+        base_url("assets/admin/node_modules/bootstrap/dist/js/bootstrap.min.js"),
+        base_url("assets/admin/js/perfect-scrollbar.jquery.min.js"),
+        base_url("assets/admin/js/waves.js"),
+        base_url("assets/admin/js/sidebarmenu.js"),
+        base_url("assets/admin/node_modules/sticky-kit-master/dist/sticky-kit.min.js"),
+        base_url("assets/admin/node_modules/sparkline/jquery.sparkline.min.js"),
+        base_url("assets/admin/js/custom.min.js"),
+        '//cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js',
+        '//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js',
+        '//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js',
+        '//cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js',
+        '//cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js',
+        '//cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js',
+        '//cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.4/js/standalone/selectize.js',
+        base_url("assets/admin/js/jq.redir.js")
       ];
       $this->css = $css;
       $this->js = $js;
-    }elseif ($type == "user") {
+    }elseif ($type == "login") {
       $css = [
-        ''
+        base_url("assets/login/vendor/bootstrap/css/bootstrap.min.css"),
+        base_url("assets/login/fonts/font-awesome-4.7.0/css/font-awesome.min.css"),
+        base_url("assets/login/vendor/animate/animate.css"),
+        base_url("assets/login/vendor/css-hamburgers/hamburgers.min.css"),
+        base_url("assets/login/vendor/select2/select2.min.css"),
+        base_url("assets/login/css/util.css"),
+        base_url("assets/login/css/main.css")
       ];
       $js = [
-        ''
-      ];
-      $this->css = $css;
-      $this->js = $js;
-    }elseif ($type == "public") {
-      $css = [
-        '//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'
-      ];
-      $js = [
-        '//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js'
+        base_url("assets/login/vendor/jquery/jquery-3.2.1.min.js"),
+        base_url("assets/login/vendor/bootstrap/js/popper.js"),
+        base_url("assets/login/vendor/bootstrap/js/bootstrap.min.js"),
+        base_url("assets/login/vendor/select2/select2.min.js"),
+        base_url("assets/login/vendor/tilt/tilt.jquery.min.js"),
+        '//cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js',
+        base_url("assets/login/js/main.js")
       ];
       $this->css = $css;
       $this->js = $js;

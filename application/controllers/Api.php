@@ -63,10 +63,12 @@ class Api extends REST_Controller
 	 */
    public function run_get()
    {
+     $this->isadmin();
      $this->load->model("proses/bot");
      $this->main->setTable("botrules");
      $rules = $this->main->get();
      $data = [];
+     $stat = true;
      foreach ($rules->result() as $key => $value) {
        $this->main->setTable("ardor");
        $getacc = $this->main->get();
@@ -96,16 +98,24 @@ class Api extends REST_Controller
            if (!$ins) {
              $this->main->setTable("log_failed");
              $this->main->insert(["publickey"=>$getaccarray[$random]->publickey,"reason"=>"Failed Insert"]);
+             $stat = false;
+             $msg = "Failed Insert";
              break;
            }
          }else {
            $this->main->setTable("log_failed");
            $this->main->insert(["publickey"=>$getaccarray[$random]->publickey,"reason"=>"Out Of Gas"]);
+           $stat = false;
+           $msg = "Out Of Gas";
            break;
          }
        }
      }
-
+     if ($stat) {
+       $this->response(["status"=>1,"msg"=>"success"]);
+     }else {
+       $this->response(["status"=>0,"msg"=>$msg]);
+     }
    }
    public function lastrade_get()
    {
@@ -133,7 +143,33 @@ class Api extends REST_Controller
      $dpost["password"] = md5($dpost["password"]);
      $get = $this->main->get($dpost);
      if ($get->num_rows() > 0) {
-       $this->session->set_userdata($get->row());
+       $this->session->set_userdata((array) $get->row());
+       $this->response(["status"=>1]);
+     }else {
+       $this->response(["status"=>0]);
+     }
+   }
+   public function lissession_get()
+   {
+     $this->response($this->session);
+   }
+   public function adminupdate_post()
+   {
+     $this->isadmin();
+     $dpost = $this->input->post(null,true);
+     foreach ($dpost as $key => $value) {
+       if ($dpost[$key] == "") {
+         unset($dpost[$key]);
+       }
+     }
+     if (isset($dpost["password"])) {
+       $dpost["password"] = md5($dpost["password"]);
+     }
+     $id = ["id_admin"=>$dpost['id_admin']];
+     unset($dpost['id_admin']);
+     $this->main->setTable("admin");
+     $ins = $this->main->update($dpost,$id);
+     if ($ins) {
        $this->response(["status"=>1]);
      }else {
        $this->response(["status"=>0]);
@@ -142,7 +178,8 @@ class Api extends REST_Controller
    public function admininsert_post()
    {
      $this->isadmin();
-     $dpost = $this->main->post(null,true);
+     $dpost = $this->input->post(null,true);
+     $dpost["password"] = md5($dpost["password"]);
      $this->main->setTable("admin");
      $ins = $this->main->insert($dpost);
      if ($ins) {
@@ -183,6 +220,7 @@ class Api extends REST_Controller
    public function ardorread_get($tipe='')
    {
      $this->isadmin();
+     $this->load->model("proses/bot");
      $this->main->setTable("ardor");
      $get = $this->main->get();
      if ($tipe == "selectize") {
@@ -213,6 +251,11 @@ class Api extends REST_Controller
    {
      $this->isadmin();
      $dpost = $this->input->post(null,true);
+     foreach ($dpost as $key => $value) {
+       if ($dpost[$key] == "") {
+         unset($dpost[$key]);
+       }
+     }
      $id = ["id_ardor"=>$dpost['id_ardor']];
      unset($dpost['id_ardor']);
      $this->main->setTable("ardor");
@@ -250,7 +293,7 @@ class Api extends REST_Controller
          $this->main->setTable("ardor");
          $d = $this->main->get(["id_ardor"=>$value->id_ardor]);
          $value->publickey = $d->row()->publickey;
-         $data["data"][] = [$value->id_ardor_botrecord,$value->tipe,$value->publickey,$value->status_callback,($value->quantityQNT/100000000),($value->priceNQTPerShare/100000000),$value->fullhash];
+         $data["data"][] = [$value->id_ardor_botrecord,$value->tipe,$value->publickey,$value->status_callback,($value->quantityQNT/100000000),($value->priceNQTPerShare/100000000),$value->fullhash,$value->created];
        }
        $this->response($data);
      }
@@ -320,7 +363,7 @@ class Api extends REST_Controller
        $data = [];
        $data["data"] = [];
        foreach ($get->result() as $key => $value) {
-         $data["data"][] = [$value->id_log_failed,$value->publickey,$value->created];
+         $data["data"][] = [$value->id_log_failed,$value->publickey,$value->reason,$value->created];
        }
        $this->response($data);
      }

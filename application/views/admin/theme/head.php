@@ -1,93 +1,57 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>{title}</title>
-  <!-- Tell the browser to be responsive to screen width -->
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <!-- Bootstrap 3.3.7 -->
-  {css}
-  <link rel="stylesheet" href="{url}">
-  {/css}
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <title>{title}</title>
+    		{css}
+        <link rel="stylesheet" href="{url}">
+    		{/css}
+    </head>
 
-</head>
-<body class="hold-transition skin-red sidebar-mini">
-  <script type="text/javascript">
-    const base_url = "<?= base_url() ?>";
-  </script>
-  <style media="screen">
-    .modal{
-      overflow-y:scroll;
-    }
-    .modal-dialog{
-      width:80%;
-    }
-  </style>
-<div class="wrapper">
-<header class="main-header">
-  <!-- Logo -->
-  <a href="index2.html" class="logo">
-    <!-- mini logo for sidebar mini 50x50 pixels -->
-    <span class="logo-mini"></span>
-    <!-- logo for regular state and mobile devices -->
-    <span class="logo-lg">LOGO</span>
-  </a>
-  <!-- Header Navbar: style can be found in header.less -->
-  <nav class="navbar navbar-static-top">
-    <!-- Sidebar toggle button-->
-    <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
-      <span class="sr-only">Toggle navigation</span>
-    </a>
-
-    <div class="">
-        <!-- User Account: style can be found in dropdown.less -->
-
-  </nav>
-</header>
-<aside class="main-sidebar">
-  <section class="sidebar">
-    <!-- Sidebar user panel -->
-
-    <!-- search form -->
-    <!--Logo-->
-    <!--<div class="col-md-6 col-md-offset-3">
-      LOGO
-    </div>-->
-    <!-- sidebar menu: : style can be found in sidebar.less -->
-    <?php
-    $base_admin = function($url=""){
-      return base_url("admin/".$url);
-    };
-    ?>
-    <ul class="sidebar-menu" data-widget="tree">
-      <li>
-        <a href="<?= $base_admin() ?>">
-          <i class="fa fa-home"></i>
-          <span>HOME</span>
-        </a>
-      </li>
-      <li class="treeview">
-        <a href="#">
-          <i class="fa fa-pie-chart"></i>
-          <span>MASTER DATA</span>
-          <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i>
-          </span>
-        </a>
-        <ul class="treeview-menu">
-          <li><a href="<?= $base_admin("barang") ?>"><i class="fa fa-circle-o"></i> Barang</a></li>
-          <li><a href="<?= $base_admin("detilkonsinyasi") ?>"><i class="fa fa-circle-o"></i> Detil Konsinyasi</a></li>
-        </ul>
-      </li>
-
-      <li>
-        <a href="<?= $base_admin("logout") ?>">
-          <i class="fa fa-power-off"></i> <span>LOGOUT</span>
-          <span class="pull-right-container">
-          </span>
-        </a>
-      </li>
-  </section>
-</aside>
-<div class="content-wrapper">
+    <body class="skin-default-dark fixed-layout">
+        <div class="preloader">
+            <div class="loader">
+                <div class="loader__figure"></div>
+                <p class="loader__label">System Is Loading . . </p>
+            </div>
+        </div>
+        <style media="screen">
+          /* .modal-dialog{
+            overflow-y:scroll;
+          } */
+          .modal-dialog{
+            max-width: 100%;
+            width:80%;
+          }
+        </style>
+        <?php
+        $base = function($page = ''){
+          return base_url("admin/".$page);
+        }
+        ?>
+        <div id="main-wrapper">
+            <header class="topbar">
+                <nav class="navbar top-navbar navbar-expand-md navbar-dark">
+                    <div class="navbar-collapse">
+                    </div>
+                </nav>
+            </header>
+            <aside class="left-sidebar">
+                <div class="d-flex no-block nav-text-box align-items-center">
+                    <!-- <span><img src="<?= base_url("assets/extra/log.png") ?>" alt="Logo Bandung"></span> -->
+                    <a class="waves-effect waves-dark ml-auto hidden-sm-down" href="javascript:void(0)"><i class="ti-menu"></i></a>
+                    <a class="nav-toggler waves-effect waves-dark ml-auto hidden-sm-up" href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
+                </div>
+                <div class="scroll-sidebar">
+                    <nav class="sidebar-nav">
+                        <ul id="sidebarnav">
+                            <li> <a class="waves-effect waves-dark" href="<?= $base() ?>" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Dashboard</span></a></li>
+                            <li> <a class="waves-effect waves-dark" href="<?= $base("ardoraccount") ?>" aria-expanded="false"><i class="fa fa-list"></i><span class="hide-menu">Ardor Account</span></a></li>
+                            <li> <a class="waves-effect waves-dark" href="<?= $base("report") ?>" aria-expanded="false"><i class="fa fa-globe"></i><span class="hide-menu">Report Bot</span></a></li>
+                            <li> <a class="waves-effect waves-dark" href="<?= $base("botrules") ?>" aria-expanded="false"><i class="fa fa-heart"></i><span class="hide-menu">Bot Rules</span></a></li>
+                            <li> <a class="waves-effect waves-dark" href="<?= $base("logfailed") ?>" aria-expanded="false"><i class="fa fa-search"></i><span class="hide-menu">Log Failed</span></a></li>
+                            <li> <a class="waves-effect waves-dark" href="<?= $base("adminmanage") ?>" aria-expanded="false"><i class="fa fa-arrow-left"></i><span class="hide-menu">Admin Management</span></a></li>
+                            <li> <a class="waves-effect waves-dark" href="<?= base_url("logout") ?>" aria-expanded="false"><i class="fa fa-sign-out"></i><span class="hide-menu">Logout</span></a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </aside>

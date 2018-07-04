@@ -6,7 +6,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	 */
 
 class Main extends CI_Model{
-  public $table = "user";
+  public $table = "";
+  public $limit = [];
   public function __construct()
   {
     parent::__construct();
@@ -24,6 +25,12 @@ class Main extends CI_Model{
     $this->table = $value;
     return $this;
   }
+  public function setLimit($start='',$offset='')
+  {
+    $this->limit["start"] = $start;
+    $this->limit["offset"] = $offset;
+
+  }
   /**
  	 * Run Primary Query
  	 * @example $this->main->setTable("TABLE"); $this->main->get();
@@ -34,14 +41,26 @@ class Main extends CI_Model{
   {
     if($data != ""){
       if($order != ""){
+        if (count($this->limit) > 0) {
+          return $this->db->order_by($order["table"],$order["order"])->limit($this->limit["start"],$this->limit["offset"])->get_where($this->table,$data);
+        }
         return $this->db->order_by($order["table"],$order["order"])->get_where($this->table,$data);
       }else{
+        if (count($this->limit) > 0) {
+          return $this->db->limit($this->limit["start"],$this->limit["offset"])->get_where($this->table,$data);
+        }
         return $this->db->get_where($this->table,$data);
       }
     }else{
       if($order != ""){
+        if (count($this->limit) > 0) {
+          return $this->db->order_by($order["table"],$order["order"])->limit($this->limit["start"],$this->limit["offset"])->get($this->table);
+        }
         return $this->db->order_by($order["table"],$order["order"])->get($this->table);
       }else{
+        if (count($this->limit) > 0) {
+          return $this->db->limit($this->limit["start"],$this->limit["offset"])->get($this->table);
+        }
         return $this->db->get($this->table);
       }
     }
