@@ -1,6 +1,6 @@
 <?php
 define('MAILGUN_URL', 'https://api.mailgun.net/v3/mailer.bitxplor.com');
-define('MAILGUN_KEY', 'key-743465411b3c4f3cbd0756288b0f27d3');
+define('MAILGUN_KEY', 'key-NO');
 /**
  * @author Indra Gunanda
  */
@@ -15,7 +15,7 @@ class Sendmail
  	 * @param string $to, $toname, $mailfromname, $mailfrom="shop@frasindo.com", $subject, $html, $text="", $tag="", $replyto="shop@frasindo.com"
  	 * @return bool
 	 */
-	
+
     public function mailgun($to, $toname, $mailfromname, $mailfrom="shop@frasindo.com", $subject, $html, $text="", $tag="", $replyto="shop@frasindo.com")
     {
         $array_data = array(
