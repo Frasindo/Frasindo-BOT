@@ -47,6 +47,13 @@
                             <li> <a class="waves-effect waves-dark" href="<?= $base() ?>" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Dashboard</span></a></li>
 
                             <li> <a class="waves-effect waves-dark" href="<?= $base("adminmanage") ?>" aria-expanded="false"><i class="fa fa-arrow-left"></i><span class="hide-menu">Admin Management</span></a></li>
+                            <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="ti-layout-media-right-alt"></i><span class="hide-menu">Stocks BOT</span></a>
+                            <ul aria-expanded="false" class="collapse">
+                              <li> <a class="waves-effect waves-dark" href="<?= $base("stocksaccount") ?>" aria-expanded="false"><i class="fa fa-list"></i><span class="hide-menu">Stocks Account</span></a></li>
+                              <li> <a class="waves-effect waves-dark" href="<?= $base("stocksreport") ?>" aria-expanded="false"><i class="fa fa-globe"></i><span class="hide-menu">Report Bot</span></a></li>
+                              <li> <a class="waves-effect waves-dark" href="<?= $base("stocksbotrules") ?>" aria-expanded="false"><i class="fa fa-heart"></i><span class="hide-menu">Bot Rules</span></a></li>
+                              <li> <a class="waves-effect waves-dark" href="<?= $base("stockslogfailed") ?>" aria-expanded="false"><i class="fa fa-search"></i><span class="hide-menu">Log Failed</span></a></li>
+                            </ul>
                             <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="ti-layout-media-right-alt"></i><span class="hide-menu">Ardor BOT</span></a>
                             <ul aria-expanded="false" class="collapse">
                               <li> <a class="waves-effect waves-dark" href="<?= $base("ardoraccount") ?>" aria-expanded="false"><i class="fa fa-list"></i><span class="hide-menu">Ardor Account</span></a></li>
