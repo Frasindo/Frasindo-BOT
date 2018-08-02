@@ -10,6 +10,7 @@
                 <div class="card">
                     <div class="card-body">
                       <div class="col-md-12">
+                        <div class="table-responsive">
                         <table class="table" id="main">
                           <thead>
                             <th>ID</th>
@@ -25,7 +26,7 @@
 
                           </tbody>
                         </table>
-
+                      </div>
                       </div>
                     </div>
                 </div>

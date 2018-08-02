@@ -64,7 +64,7 @@ class Template {
         base_url("assets/admin/js/sidebarmenu.js"),
         base_url("assets/admin/node_modules/sticky-kit-master/dist/sticky-kit.min.js"),
         base_url("assets/admin/node_modules/sparkline/jquery.sparkline.min.js"),
-        base_url("assets/admin/js/custom.min.js"),
+        base_url("assets/admin/js/custom.js"),
         '//cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js',
         '//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js',
         '//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js',

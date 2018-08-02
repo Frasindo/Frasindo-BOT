@@ -33,7 +33,7 @@ class Login extends CI_Controller{
     ],true);
     // Render
     $build = [];
-    $this->template->renderHTML(['head','home','foot'],['title'=>"Halaman Masuk",'other'=>$build]);
+    $this->template->renderHTML(['head','home','foot'],['title'=>"Login Page",'other'=>$build]);
   }
 
 }

@@ -15,17 +15,19 @@
                         </button>
                       </div>
                       <div class="col-md-12">
-                        <table class="table" id="main">
-                          <thead>
-                            <th>ID</th>
-                            <th>Spread</th>
-                            <th>Coin</th>
-                            <th>Created</th>
-                          </thead>
-                          <tbody>
+                        <div class="table-responsive">
+                          <table class="table" id="main">
+                            <thead>
+                              <th>ID</th>
+                              <th>Spread</th>
+                              <th>Coin</th>
+                              <th>Created</th>
+                            </thead>
+                            <tbody>
 
-                          </tbody>
-                        </table>
+                            </tbody>
+                          </table>
+                        </div>
                       </div>
                     </div>
                 </div>
